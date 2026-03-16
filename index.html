@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <title>AI Resume Analyzer</title>
+  </head>
+
+  <body>
+    <h2>AI Resume Analyzer</h2>
+
+    <input type="file" id="resume" />
+    <button onclick="uploadResume()">Analyze Resume</button>
+
+    <h3>Result</h3>
+    <pre id="result"></pre>
+
+    <script>
+      async function uploadResume() {
+        const fileInput = document.getElementById("resume");
+
+        const formData = new FormData();
+        formData.append("file", fileInput.files[0]);
+
+        const response = await fetch("http://127.0.0.1:8000/analyze", {
+          method: "POST",
+          body: formData,
+        });
+
+        const data = await response.json();
+
+        document.getElementById("result").innerText =
+          "Score: " +
+          data.score +
+          "%\n\n" +
+          "Skills Found:\n" +
+          data.skills_found +
+          "\n\n" +
+          "Missing Skills:\n" +
+          data.missing_skills;
+      }
+    </script>
+  </body>
+</html>
