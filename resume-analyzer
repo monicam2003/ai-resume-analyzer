@@ -1,0 +1,14 @@
+ AI Resume Analyzer
+
+This project analyzes resumes and gives suggestions to improve them.
+
+ Features
+- Upload resume
+- Analyze skills
+- Suggest improvements
+
+ Technologies Used
+- Python
+- HTML
+- CSS
+- JavaScript
